@@ -1,0 +1,170 @@
+h1 {
+  font-size: 60px;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, black, black);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-container {
+  height: 100%;
+  width: 100%;
+}
+
+.blackboard {
+  background: no-repeat center;
+  background-image: url('/assets/images/blackboard.jpg');
+  font-size: 80px;
+  width: 1000px;
+  height: 640px;
+  padding: 50px 60px;
+  margin-left: 300px;
+}
+
+.blackboard-row {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.question {
+  flex-grow: 1;
+  font-family: 'Chalktastic';
+  color: white;
+}
+
+.answer-field {
+  font-size: 80px;
+  font-family: 'Chalktastic';
+  color: white;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  width: 300px;
+  outline: dashed rgba(255,255,255,0.3) 5px;
+  &:focus {
+    outline: dashed white 5px;
+  }
+  &:disabled {
+    outline: none;
+  }
+}
+
+.cirno {
+  position: absolute;
+  left: 200px;
+  bottom: 0;
+}
+
+.dialogue-overlay {
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dialogue-box {
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+  margin-left: 300px;
+}
+
+.dialogue {
+  font-size: 50px;
+  position: absolute;
+  top: 40px;
+  left: 100px;
+  width: 930px;
+  word-wrap: break-word;
+}
+
+.advance-icon {
+  position: absolute;
+  bottom: 80px;
+  right: 100px;
+  font-size: 50px;
+  font-weight: bolder;
+  animation-name: bob;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.insult-box {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+}
+
+.insult {
+  color: white;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 225px;
+  text-align: center;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 1s;
+}
+
+@keyframes bob {
+  0% {
+    bottom: 80px;
+  }
+  50% {
+    bottom: 60px;
+  }
+  100% {
+    bottom: 80px;
+  }
+}
+
+.gameover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/images/math.gif');
+  background-size: 400px;
+  z-index: 1000;
+}

@@ -1,0 +1,33 @@
+<div class="main container">
+  <div class="title">
+    <img src="/assets/images/title.png" alt="">
+  </div>
+  <div class="game-container container">
+    <div class="blackboard">
+      <div class="blackboard-row" *ngFor="let q of current, let ind = index">
+        <span class="question">{{q.q}}</span>
+        <input type="text" class="answer-field form-control" [(ngModel)]="answers[ind]" spellcheck="false" (input)="checkAnswer()"  [disabled]="ind != i">
+      </div>
+    </div>
+  </div>
+  <div class="cirno">
+    <img [src]="facing ? '/assets/images/cirno.png' : '/assets/images/cirno_back.png'" alt="cirno">
+  </div>
+</div>
+
+<div class="dialogue-overlay" *ngIf="talking" [ngClass]="{ 'fade-in': talking, 'fade-out': !talking }" (click)="advance()">
+  <div class="dialogue-box">
+    <img src="/assets/images/dialoguebox.png">
+    <h2 class="dialogue">{{activeDialogue}}</h2>
+    <div class="advance-icon" *ngIf="endOfLine">▽</div>
+  </div>
+</div>
+
+<div class="insult-box" *ngIf="insulting">
+  <img src="/assets/images/bubble.png" height="200">
+  <h3 class="insult">{{activeInsult}}</h3>
+</div>
+
+<div class="gameover" *ngIf="gameover">
+
+</div>

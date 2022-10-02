@@ -1,6 +1,6 @@
 <div class="main container">
   <div class="title">
-    <img src="/assets/images/title.png" alt="">
+    <img src="/assets/math/images/title.png" alt="">
   </div>
   <div class="game-container container">
     <div class="blackboard">
@@ -11,20 +11,20 @@
     </div>
   </div>
   <div class="cirno">
-    <img [src]="facing ? '/assets/images/cirno.png' : '/assets/images/cirno_back.png'" alt="cirno">
+    <img [src]="facing ? '/assets/math/images/cirno.png' : '/assets/math/images/cirno_back.png'" alt="cirno">
   </div>
 </div>
 
 <div class="dialogue-overlay" *ngIf="talking" [ngClass]="{ 'fade-in': talking, 'fade-out': !talking }" (click)="advance()">
   <div class="dialogue-box">
-    <img src="/assets/images/dialoguebox.png">
+    <img src="/assets/math/images/dialoguebox.png">
     <h2 class="dialogue">{{activeDialogue}}</h2>
     <div class="advance-icon" *ngIf="endOfLine">▽</div>
   </div>
 </div>
 
 <div class="insult-box" *ngIf="insulting">
-  <img src="/assets/images/bubble.png" height="200">
+  <img src="/assets/math/images/bubble.png" height="200">
   <h3 class="insult">{{activeInsult}}</h3>
 </div>
 

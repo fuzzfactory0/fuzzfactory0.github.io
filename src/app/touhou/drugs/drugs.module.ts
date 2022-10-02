@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { DrugsRoutingModule } from './drugs-routing.module';
 import { DrugsComponent } from './drugs.component';
+import { DrugsGameComponent } from './components/drugs-game/drugs-game.component';
 
 
 @NgModule({
   declarations: [
-    DrugsComponent
+    DrugsComponent,
+    DrugsGameComponent
   ],
   imports: [
     CommonModule,

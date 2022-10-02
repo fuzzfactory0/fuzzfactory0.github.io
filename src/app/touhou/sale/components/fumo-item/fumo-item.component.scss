@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 0px #AAA;
+}
+
+.name {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.price {
+  margin: 0;
+}
+
+.buy-now {
+  background-color: #4169e1;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 140px;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+  &:disabled {
+    background-color: #dc3545;
+  }
+}
+
+.trigger {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  padding-top: 10px;
+}

@@ -1,0 +1,10 @@
+<div class="header">
+  <img src="/assets/sale/images/nyamazon.png" height="50px">
+  <h3 class="search">Touhou Fan Fumo Buying Experience Simulator</h3>
+</div>
+<h1 class="sale">HOT FUMO SALE</h1>
+<div class="fumolist">
+  <div class="fumo" *ngFor="let fumo of fumolist">
+    <app-fumo-item [name]="fumo.name" [price]="fumo.price"></app-fumo-item>
+  </div>
+</div>

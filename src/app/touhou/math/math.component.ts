@@ -19,7 +19,6 @@ export class MathComponent implements OnInit {
   
   answers: string[] = [];
   level: number = 0;
-  cirno: string = '/assets/images/cirno.png';
   dialogue: string[][] = [
     [
       'Hello welcom to cirno school of math',
@@ -182,7 +181,7 @@ export class MathComponent implements OnInit {
 
   playAudio(name: string){
     let audio = new Audio();
-    audio.src = `../../../assets/audio/${name}.mp3`;
+    audio.src = `../../../assets/math/audio/${name}.mp3`;
     audio.load();
     audio.play();
   }

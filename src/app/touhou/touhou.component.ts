@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./touhou.component.scss']
 })
 export class TouhouComponent implements OnInit {
-  title = 'angular-website';
+  title = 'Fuzz\'s dumpster';
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigateByUrl('touhou/math');
+    this.router.navigateByUrl('touhou/sale');
   }
 
 }

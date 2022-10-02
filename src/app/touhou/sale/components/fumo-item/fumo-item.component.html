@@ -1,0 +1,8 @@
+<div class="card">
+  <h2 class="name">{{realName}} ({{stock}} left)</h2>
+  <img [src]="'/assets/sale/images/' + name + '.jpg'" alt="fumo" height="250">
+  <h3 class="price">${{price}}</h3>
+  <div class="trigger" (mouseenter)="sellout()">
+    <button class="buy-now" [disabled]="soldout">{{soldout ? 'SOLD OUT' : 'BUY NOW'}}</button>
+  </div>
+</div>

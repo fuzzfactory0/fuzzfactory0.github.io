@@ -31,6 +31,6 @@ export class FumoItemComponent implements OnInit {
       return;
     }
     this.stock--;
-    setTimeout(() => this.decreaseStock(), 1);
+    setTimeout(() => this.decreaseStock(), 16);
   }
 }

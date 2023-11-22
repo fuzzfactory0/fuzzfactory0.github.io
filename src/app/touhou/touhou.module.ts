@@ -7,7 +7,7 @@ import { TouhouComponent } from './touhou.component';
 
 @NgModule({
   declarations: [
-    TouhouComponent
+    TouhouComponent,
   ],
   imports: [
     CommonModule,

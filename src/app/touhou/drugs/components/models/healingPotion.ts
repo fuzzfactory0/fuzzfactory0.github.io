@@ -3,7 +3,7 @@ import { Item } from "./item";
 export class HealingPotion implements Item {
   name: string;
   description: string;
-  icon: string;
+  id: string;
   price: number;
   sellable: boolean;
   ingredient: boolean;
@@ -11,7 +11,7 @@ export class HealingPotion implements Item {
   constructor() {
     this.name = 'Healing Potion';
     this.description = 'A basic potion for treating small injuries and minor illnesses.';
-    this.icon = 'healing';
+    this.id = 'healing';
     this.price = 5;
     this.sellable = true;
     this.ingredient = false;

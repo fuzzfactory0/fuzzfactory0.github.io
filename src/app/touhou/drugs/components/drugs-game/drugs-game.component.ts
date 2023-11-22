@@ -5,6 +5,8 @@ import { MainScene } from '../scenes/main.scene';
 import { EndingScene } from '../scenes/ending.scene';
 
 import { height, width } from '../scenes/config';
+import { DayEndScene } from '../scenes/day-end.scene';
+import { ShopScene } from '../scenes/shop.scene';
 
 @Component({
   selector: 'app-drugs-game',
@@ -14,11 +16,11 @@ import { height, width } from '../scenes/config';
 export class DrugsGameComponent implements OnInit {
 
   config: Phaser.Types.Core.GameConfig = {
-    title: "Kirisame Marisa's wonderful potion lab",
-    type: Phaser.AUTO,
+    title: "Kirisame Marisa's wonderful potion brewery",
+    type: Phaser.WEBGL,
     width: width,
     height: height,
-    scene: [ /*TitleScene,*/ MainScene, EndingScene ],
+    scene: [ MainScene, TitleScene, ShopScene, DayEndScene, EndingScene ],
     parent: 'phaser-container',
     physics: {
       default: 'arcade',
@@ -27,7 +29,7 @@ export class DrugsGameComponent implements OnInit {
       }
     },
 
-    backgroundColor: "#18216D"
+    backgroundColor: "#000000"
   };
   phaserGame!: Phaser.Game;
 

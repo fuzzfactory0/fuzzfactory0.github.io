@@ -86,7 +86,7 @@ export class MainScene extends Phaser.Scene {
     ! Get money at the end of the day
     ! Save all progress, inventory state, money, unlocks etc to localstorage
     ! in the day end scene have updates to lore (new drug recipes, drug lords, saul, police etc)
-    !use money to buy things that appear in the background (japanese goburin fumo, videogames, manga, golden things)
+    ! use money to buy things that appear in the background (japanese goburin fumo, videogames, manga, golden things)
   */
 
   create(): void {

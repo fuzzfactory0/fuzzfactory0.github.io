@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GoburinComponent } from './goburin.component';
+import { YuridexComponent } from './yuridex/yuridex.component';
 
-const routes: Routes = [{ path: '', component: GoburinComponent }];
+const routes: Routes = [
+  { path: '', component: YuridexComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GoburinRoutingModule { }
+export class YuriRoutingModule { }

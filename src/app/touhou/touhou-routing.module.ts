@@ -6,8 +6,7 @@ const routes: Routes = [
   { path: '', component: TouhouComponent }, 
   { path: 'math', loadChildren: () => import('./math/math.module').then(m => m.MathModule) },
   { path: 'drugs', loadChildren: () => import('./drugs/drugs.module').then(m => m.DrugsModule) },
-  { path: 'sale', loadChildren: () => import('./sale/sale.module').then(m => m.SaleModule) },
-  { path: 'goburin', loadChildren: () => import('./goburin/goburin.module').then(m => m.GoburinModule) }
+  { path: 'sale', loadChildren: () => import('./sale/sale.module').then(m => m.SaleModule) }
 ];
 
 @NgModule({

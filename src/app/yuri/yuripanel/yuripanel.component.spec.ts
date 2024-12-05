@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoburinComponent } from './goburin.component';
+import { YuripanelComponent } from './yuripanel.component';
 
-describe('GoburinComponent', () => {
-  let component: GoburinComponent;
-  let fixture: ComponentFixture<GoburinComponent>;
+describe('YuripanelComponent', () => {
+  let component: YuripanelComponent;
+  let fixture: ComponentFixture<YuripanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GoburinComponent ]
+      declarations: [ YuripanelComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GoburinComponent);
+    fixture = TestBed.createComponent(YuripanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

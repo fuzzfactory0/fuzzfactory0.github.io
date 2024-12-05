@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "fuzzs-dumpster:build:production"
+              "buildTarget": "fuzzs-dumpster:build:production"
             },
             "development": {
-              "browserTarget": "fuzzs-dumpster:build:development"
+              "buildTarget": "fuzzs-dumpster:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fuzzs-dumpster:build"
+            "buildTarget": "fuzzs-dumpster:build"
           }
         },
         "test": {

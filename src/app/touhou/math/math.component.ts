@@ -3,9 +3,10 @@ import { Question } from './interfaces/Question.interface';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-math',
-  templateUrl: './math.component.html',
-  styleUrls: ['./math.component.scss']
+    selector: 'app-math',
+    templateUrl: './math.component.html',
+    styleUrls: ['./math.component.scss'],
+    standalone: false
 })
 export class MathComponent implements OnInit {
   questions: Question[] = [

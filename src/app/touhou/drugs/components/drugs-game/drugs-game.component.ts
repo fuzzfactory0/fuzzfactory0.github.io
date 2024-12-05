@@ -9,9 +9,10 @@ import { DayEndScene } from '../scenes/day-end.scene';
 import { ShopScene } from '../scenes/shop.scene';
 
 @Component({
-  selector: 'app-drugs-game',
-  templateUrl: './drugs-game.component.html',
-  styleUrls: ['./drugs-game.component.scss']
+    selector: 'app-drugs-game',
+    templateUrl: './drugs-game.component.html',
+    styleUrls: ['./drugs-game.component.scss'],
+    standalone: false
 })
 export class DrugsGameComponent implements OnInit {
 

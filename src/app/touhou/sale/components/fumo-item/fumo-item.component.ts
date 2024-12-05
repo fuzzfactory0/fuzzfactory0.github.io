@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-fumo-item',
-  templateUrl: './fumo-item.component.html',
-  styleUrls: ['./fumo-item.component.scss']
+    selector: 'app-fumo-item',
+    templateUrl: './fumo-item.component.html',
+    styleUrls: ['./fumo-item.component.scss'],
+    standalone: false
 })
 export class FumoItemComponent implements OnInit {
   @Input() name: string = 'reimu';

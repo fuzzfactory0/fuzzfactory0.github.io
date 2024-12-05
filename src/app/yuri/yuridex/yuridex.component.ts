@@ -3,9 +3,10 @@ import { DataService } from '../services/data.service';
 import { FullSeries } from '../entities/yuriClass';
 
 @Component({
-  selector: 'app-yuridex',
-  templateUrl: './yuridex.component.html',
-  styleUrls: ['./yuridex.component.scss']
+    selector: 'app-yuridex',
+    templateUrl: './yuridex.component.html',
+    styleUrls: ['./yuridex.component.scss'],
+    standalone: false
 })
 export class YuridexComponent implements OnInit {
 

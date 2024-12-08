@@ -54,5 +54,6 @@ export const englishOverrides = [
   { id: 174603, english: `This Is Not Heaven, But...` },
   { id: 179139, english: `The Role Of The Femme Fatale` },
   { id: 179296, english: `Am I About to Join a Kill-or-Be-Killed Love Triangle?` },
+  { id: 184992, english: `Cat Day` },
 
 ]

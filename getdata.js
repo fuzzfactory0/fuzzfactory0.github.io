@@ -1,6 +1,5 @@
 
 const raw = require('./input.js');
-console.log(raw)
 
 const fs = require('fs')
 
@@ -67,10 +66,15 @@ var index = 0;
 var all = [];
 
 
-const NEW_ONLY = process.argv[2];
-let rawFiltered;
-if (NEW_ONLY == 'update') {
+const ARG = process.argv[2];
+let rawFiltered = [];
+if (ARG == 'update') {
   rawFiltered = [...new Set(raw.map(l => l.match(/^.+[0-9]+\//)[0]))];
+} else if (parseInt(ARG) > 0) {
+  let series = raw.find(s => s.includes(ARG));
+  const existing = JSON.parse(fs.readFileSync('./output.json'));
+  all = existing.filter(s => s.id != ARG);
+  if (series) rawFiltered = [series];
 } else {
   const existing = JSON.parse(fs.readFileSync('./output.json'));
   rawFiltered = [...new Set(raw.map(l => l.match(/^.+[0-9]+\//)[0]))].filter(m => !existing.some(s => m.includes(s.id)));
@@ -81,7 +85,18 @@ console.log('FETCHING', rawFiltered.length, 'SERIES');
 let interv = setInterval(() => {
   if (index < rawFiltered.length) {
     get(rawFiltered[index]).then(d => {
-      const rawstaff = d.staff.edges.filter(s => s.role.toLowerCase().includes('story') || s.role.toLowerCase().includes('art') || s.role.toLowerCase().includes('character design') || s.role.toLowerCase().includes('illustration'));
+      const rawstaff = d.staff.edges.filter(s => 
+        (
+          s.role.toLowerCase().includes('story') ||
+          s.role.toLowerCase().includes('art') ||
+          s.role.toLowerCase().includes('character design') ||
+          s.role.toLowerCase().includes('illustration')
+        ) && (
+          !s.role.toLowerCase().includes('lettering') &&
+          !s.role.toLowerCase().includes('touch-up') && 
+          !s.role.toLowerCase().includes('translator')
+        )
+      );
       const staff = rawstaff.map(s => {
         const name = (s.node.name.last && s.node.name.first) ? `${s.node.name.last} ${s.node.name.first}` : s.node.name.full;
         return {name, image: s.node.image.medium, role: s.role}

@@ -17,7 +17,6 @@
         <div class="icons">
           <mat-icon *ngIf="manga.completeTranslation" matTooltip="This manga is finished and fully translated" class="green">check_circle</mat-icon>
           <mat-icon *ngIf="manga.nsfw" matTooltip="This manga contains some degree of NSFW content" class="red">18_up_rating</mat-icon>
-
         </div>
       </div>
       <p class="description" [innerHTML]="manga.anilistData.description"></p>

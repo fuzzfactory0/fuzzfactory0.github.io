@@ -7,10 +7,18 @@
     </div>
     <div class="column manga-info">
       <h1 class="manga-title">{{getTitle()}}</h1>
-      <div class="tag-container">
-        @for (tag of manga.categories; track $index) {
-          <mat-chip (click)="goToCategory(tag)">{{tag.name}}</mat-chip>
-        }
+      <div class="extra-info">
+        <div class="tag-container">
+          @for (tag of manga.categories; track $index) {
+            <mat-chip [matTooltip]="tag.description" (click)="goToCategory(tag)">{{tag.name}}</mat-chip>
+          }
+        </div>
+        <div class="divider" *ngIf="manga.nsfw || manga.completeTranslation"></div>
+        <div class="icons">
+          <mat-icon *ngIf="manga.completeTranslation" matTooltip="This manga is finished and fully translated" class="green">check_circle</mat-icon>
+          <mat-icon *ngIf="manga.nsfw" matTooltip="This manga contains some degree of NSFW content" class="red">18_up_rating</mat-icon>
+
+        </div>
       </div>
       <p class="description" [innerHTML]="manga.anilistData.description"></p>
       <div class="row staff-links">

@@ -23,7 +23,7 @@
     @if (filterMode) {
       <div class="filter-pills-container">
         @for (category of displayCategories; track $index) {
-          <mat-chip (click)="setFilter(category)" [ngClass]="{'pill-green': getIsIncluded(category), 'pill-red': getIsExcluded(category)}">{{category.name}}</mat-chip>
+          <mat-chip (click)="setFilter(category)" [matTooltip]="category.description" [ngClass]="{'pill-green': getIsIncluded(category), 'pill-red': getIsExcluded(category)}">{{category.name}}</mat-chip>
         }
       </div>
     }
@@ -40,6 +40,10 @@
         <div class="grid-container">
           @for (manga of category.series; track $index) {
             <div class="manga-container" (click)="showDetails(manga)">
+              <div class="manga-icons">
+                <mat-icon *ngIf="manga.nsfw" matTooltip="This manga contains some degree of NSFW content" class="red">18_up_rating</mat-icon>
+                <mat-icon *ngIf="manga.completeTranslation" matTooltip="This manga is finished and fully translated" class="green">check_circle</mat-icon>
+              </div>
               <div class="manga-cover" [ngStyle]="{'background-image': 'url(' + getCover(manga) + ')', '--shadow-color': (manga.anilistData.coverImage.color || 'white')}" [id]="'cover-'+manga.id">
               </div>
               <h3 class="manga-title">{{getTitle(manga)}}</h3>

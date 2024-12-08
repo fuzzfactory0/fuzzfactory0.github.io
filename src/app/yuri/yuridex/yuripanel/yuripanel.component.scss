@@ -37,6 +37,24 @@ a:hover, a:hover mat-icon {
       margin-top: 0;
       margin-bottom: 16px;
     }
+    .extra-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      .icons {
+        display: flex;
+        gap: 16px;
+        mat-icon {
+          transform: scale(1.5);
+        }
+        .green {
+          color: $yuri-green;
+        }
+        .red {
+          color: $yuri-red;
+        }
+      }
+    }
     .tag-container {
       display: flex;
       flex-wrap: wrap;

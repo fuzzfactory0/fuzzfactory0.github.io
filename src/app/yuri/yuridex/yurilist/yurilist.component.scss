@@ -128,6 +128,7 @@ mat-icon {
       gap: 10px 55px;
       color: white;
       .manga-container {
+        position: relative;
         width: 250px;
         height: auto;
         padding: 16px;
@@ -139,6 +140,28 @@ mat-icon {
         cursor: pointer;
         &:hover {
           transform: scale(1.1);
+        }
+        .manga-icons {
+          display: flex;
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding: 24px 28px;
+          gap: 12px;
+          filter: 
+            drop-shadow(1px 1px 0 white)
+            drop-shadow(-1px -1px 0 white)
+            drop-shadow(1px -1px 0 white)
+            drop-shadow(-1px 1px 0 white);
+          mat-icon {
+            transform: scale(1.5);          
+            &.green {
+              color: $yuri-green-dark;
+            }
+            &.red {
+              color: $yuri-red-dark;
+            }
+          }
         }
         .manga-cover {
           width: 210px;

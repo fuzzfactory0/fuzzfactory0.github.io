@@ -34,7 +34,7 @@ export class DataService {
         chapters: 1,
         volumes: 0,
         staff: [
-          { name: 'Ageharuuu', role: 'Story & Art', image: ''}
+          { name: 'Ageharuuu', role: 'Story & Art', image: '', id: 0}
         ]
       },
       [cat.TOXIC, cat.DRAMA, cat.WTF, cat.DEPRESSO, cat.ONESHOT],
@@ -67,7 +67,7 @@ export class DataService {
         chapters: 1,
         volumes: 0,
         staff: [
-          { name: 'Tsutsui Itsuki', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/medium/n126701-jCIY8zgxZOA8.jpg'}
+          { name: 'Tsutsui Itsuki', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/medium/n126701-jCIY8zgxZOA8.jpg', id: 126701}
         ]
       },
       [cat.TOXIC, cat.DRAMA, cat.WTF, cat.ONESHOT],
@@ -100,7 +100,7 @@ export class DataService {
         chapters: 1,
         volumes: 0,
         staff: [
-          { name: 'Sorajirou', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/large/n168434-3JbAgG4UAAhe.png'}
+          { name: 'Sorajirou', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/large/n168434-3JbAgG4UAAhe.png', id: 168434}
         ]
       },
       [cat.DRAMA, cat.WTF, cat.DEPRESSO, cat.PSYCHO, cat.ONESHOT],
@@ -133,7 +133,7 @@ export class DataService {
         chapters: 1,
         volumes: 0,
         staff: [
-          { name: 'Kumoko', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/large/n345766-nxxdRnI2OJrn.png'}
+          { name: 'Kumoko', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/large/n345766-nxxdRnI2OJrn.png', id: 345766 }
         ]
       },
       [cat.COMFY, cat.DRAMA, cat.ADULT_LIFE, cat.COHAB, cat.ONESHOT],
@@ -141,6 +141,39 @@ export class DataService {
       'https://dynasty-scans.com/chapters/nukumori_blanket',
       null,
       null,
+      true, false
+    );
+
+    this.addSeries(
+      {
+        id: 1000000005,
+        title: {
+          romaji: "Rapunzel",
+          english: null
+        },
+        anilist: '',
+        mal: '',
+        description: null,
+        format: 'MANGA',
+        status: 'FINISHED',
+        isAdult: false,
+        coverImage: {
+          medium: 'https://mangadex.org/covers/1a0769f4-ad83-43b2-9d7b-8f346995e2eb/9d1ed777-4fb8-4d2d-ab96-f95d537df4ff.jpg',
+          extraLarge: 'https://mangadex.org/covers/1a0769f4-ad83-43b2-9d7b-8f346995e2eb/9d1ed777-4fb8-4d2d-ab96-f95d537df4ff.jpg',
+          large: 'https://mangadex.org/covers/1a0769f4-ad83-43b2-9d7b-8f346995e2eb/9d1ed777-4fb8-4d2d-ab96-f95d537df4ff.jpg',
+          color: '#dddddd'
+        },
+        chapters: 1,
+        volumes: 0,
+        staff: [
+          { name: 'Komoda', role: 'Story & Art', image: 'https://s4.anilist.co/file/anilistcdn/staff/large/default.jpg', id: 107233 }
+        ]
+      },
+      [cat.DRAMA, cat.TOXIC, cat.WTF, cat.ONESHOT],
+      'https://mangadex.org/title/1a0769f4-ad83-43b2-9d7b-8f346995e2eb/rapunzel',
+      null,
+      null,
+      'Hmm yes, both of those things hold the exact same value. Yep. It\'s exactly the same!',
       true, false
     );
 
@@ -216,7 +249,7 @@ export class DataService {
     this.addSeries(raw.m177399, [cat.COMFY, cat.DRAMA, cat.STOCKHOLM, cat.DEGEN], 'https://mangadex.org/title/a72d5653-7238-40ba-8135-c93910a02bc4/shuu-ni-ichido-classmate-wo-kau-hanashi', 'https://dynasty-scans.com/series/a_story_about_buying_a_classmate_once_a_week_5000_yen_for_an_excuse_to_spend_time_together', null, 'The manga is extremely slow, but the web novel is being translated quickly.', false, false);
     this.addSeries(raw.m180856, [cat.IDIOTS, cat.SCHOOL, cat.STOCKHOLM], 'https://mangadex.org/title/62d99da1-33e7-45cf-98a2-ca4544fc0344/yuri-no-hajimari-wa-dorei-kara', null, null, 'The world record holder in the "Forget about the premise in the title" any% speedrun category.', false, false);
     this.addSeries(raw.m183605, [cat.COMFY, cat.STOCKHOLM, cat.SCHOOL], 'https://mangadex.org/title/d4e21c02-0549-48aa-ab50-5fec2c76f74c/kao-dake-yoi-classmate-ga-yatara-to-guigui-kuru-yuri-no-hanashi', null, null, 'This is the kind of NTR I can get behind', false, false);
-    this.addSeries(raw.m120067, [cat.COMFY, cat.MANGAKA, cat.ADULT_LIFE, cat.COHAB], 'https://mangadex.org/title/7daf8dd0-6cc0-4b8f-8af0-a330af9a9bd5/futari-escape', 'https://dynasty-scans.com/series/futari_escape', 'https://sevenseasentertainment.com/series/futari-escape/', 'Where can I get a small fluffy freeloader wife who takes me on trips around Japan?', true, false);
+    this.addSeries(raw.m120067, [cat.COMFY, cat.MANGAKA, cat.ADULT_LIFE, cat.COHAB], 'https://mangadex.org/title/7daf8dd0-6cc0-4b8f-8af0-a330af9a9bd5/futari-escape', 'https://dynasty-scans.com/series/futari_escape', 'https://sevenseasentertainment.com/series/futari-escape/', 'Where can I get a tiny fluffy freeloader gamer wife who takes me on trips around Japan?<br><br>This is one of the comfiest series there is.', true, false);
     this.addSeries(raw.m100187, [cat.COMFY, cat.SCHOOL, cat.CLUB, cat.SUBTEXT], 'https://mangadex.org/title/ba64bce2-ccc0-437c-87fc-aea738521e46/nettaigyo-wa-yuki-ni-kogareru', 'https://dynasty-scans.com/series/nettaigyo_wa_yuki_ni_kogareru', 'https://www.viz.com/a-tropical-fish-yearns-for-snow', 'I will forever be angry at the author for not committing to yuri. These girls are so obviously gay.', true, false);
     this.addSeries(raw.m53239,  [cat.COMFY, cat.SCHOOL, cat.SUBTEXT, cat.AGE_GAP], 'https://mangadex.org/title/e02f32f7-66d6-4eda-818e-a7e4e2c198a1/himawari-san', 'https://dynasty-scans.com/series/miss_sunflower', null, 'Super comfy!', true, false, true);
     this.addSeries(raw.m143147, [cat.ADULT_LIFE, cat.WORK, cat.FOOD], 'https://mangadex.org/title/cd8c0cda-debe-40e4-a0ea-462046a97697/kuchibeta-shokudou', 'https://dynasty-scans.com/series/restaurant_of_the_awkward_people', null, 'This is a pixiv series, so updates are very irregualar.', false, false);
@@ -232,7 +265,7 @@ export class DataService {
     this.addSeries(raw.m140060, [cat.COMFY, cat.MANGAKA, cat.IDIOTS, cat.IDOL], 'https://mangadex.org/title/65361a37-9f9a-4f95-92fa-d6810f0fab17/my-best-friend-who-i-love-fell-completely-in-love-with-my-vtuber-self', 'https://dynasty-scans.com/series/my_best_friend_who_i_love_fell_completely_in_love_with_my_vtuber_self', null, 'A pixiv series, expect irregular updates.', false, false);
     this.addSeries(raw.m117639, [cat.WORK, cat.IDOL, cat.SCHOOL, cat.STOCKHOLM, cat.SUBTEXT], 'https://mangadex.org/title/96335764-0c1f-4686-9193-b1c6bb537a71/seiyuu-radio-no-ura-omote', 'https://dynasty-scans.com/series/the_two_sides_of_seiyuu_radio', 'https://global.bookwalker.jp/series/498870/', null, false, false);
     this.addSeries(raw.m107987, [cat.SCHOOL, cat.DRAMA, cat.MUSIC], 'https://mangadex.org/title/0e8fac17-979e-4e37-8f45-2c334b25d6dd/whisper-me-a-love-song', 'https://dynasty-scans.com/series/whispering_you_a_love_song', 'https://kodansha.us/series/whisper-me-a-love-song/', 'Afflicted by the common yuri curse of "side couple is far better than the main couple"', false, false);
-    this.addSeries(raw.m178230, [cat.SCHOOL, cat.MUSIC, cat.COMFY], 'https://mangadex.org/title/7e905fc7-d534-479e-9880-f89effbf30e2/kimi-ga-hoeru-tame-no-uta-wo', null, null, 'Officially abreviated as Kimi Hoe, which is extremely unfortunate.', false, false);
+    this.addSeries(raw.m178230, [cat.SCHOOL, cat.MUSIC, cat.COMFY], 'https://mangadex.org/title/7e905fc7-d534-479e-9880-f89effbf30e2/kimi-ga-hoeru-tame-no-uta-wo', null, null, 'Officially abbreviated as Kimi Hoe, which is extremely unfortunate.', false, false);
     this.addSeries(raw.m156348, [cat.SCHOOL, cat.MUSIC, cat.SUBTEXT], 'https://mangadex.org/title/d1cf91fe-67cb-4ca0-bbba-8b35d896c649/rock-is-a-lady-s-modesty', 'https://dynasty-scans.com/series/rock_is_a_ladys_modesty', null, 'The gap moe of high class ladies violently jamming metal sure is something.', false, false);
     this.addSeries(raw.m161653, [cat.SCHOOL, cat.CLUB, cat.MUSIC, cat.DRAMA], 'https://mangadex.org/title/35afa4a9-0128-4e15-9801-c34d9e1b9f9a/kimi-no-tame-no-curtain-call', 'https://dynasty-scans.com/series/a_curtain_call_for_you', null, null, false, false);
     this.addSeries(raw.m64525,  [cat.COMFY, cat.WORK, cat.MUSIC], 'https://mangadex.org/title/31e57876-6edd-4e5e-8655-1f43b0c275dc/cirque-arachne', 'https://dynasty-scans.com/series/cirque_arachne', null, null, true, true);
@@ -379,7 +412,8 @@ export class DataService {
     this.addSeries(raw.m113586, [cat.COMFY, cat.DATING, cat.COHAB], 'https://mangadex.org/title/81eea35d-5e99-482f-a7da-9a4495c7da43/the-girls-arcadia', 'https://dynasty-scans.com/series/the_girls_arcadia', null, 'The author also released <a href="https://dynasty-scans.com/series/recipe_for_arcadia" target="_blank">"Recipe for Arcadia"</a>, which is a series of short sequels to this.', true, false);
     this.addSeries(raw.m127445, [cat.FANTASY, cat.GENDERBEND, cat.ACTION], 'https://mangadex.org/title/fd41659a-e4ce-458f-b087-8032b7a5fab9/netachara-tensei-toka-anmarida', null, 'https://j-novel.club/series/did-i-seriously-just-get-reincarnated-as-my-gag-character-manga', 'Isekai\'d as demon girl... get loli elf meido gf...<br>It should have been me...', false, false);
     this.addSeries(raw.m185202, [cat.COMFY, cat.SCHOOL, cat.ONESHOT], 'https://mangadex.org/title/38d85ed7-d75d-41bf-976e-5a70e2e00858/o-hitsuji-chan-wa-sawaritai', null, null, null, true, false);
-    this.addSeries(raw.m184992, [cat.FANTASY, cat.ONESHOT, cat.COMFY, cat.IDIOTS], 'https://mangadex.org/title/ce61de50-8f2e-4d77-80b8-5720b92f76a8/neko-no-hi', 'https://dynasty-scans.com/chapters/cat_day', null, 'Why can\'t this happen to my cats?', true, false);
+    this.addSeries(raw.m184992, [cat.FANTASY, cat.ONESHOT, cat.COMFY, cat.IDIOTS, cat.ADULT_LIFE], 'https://mangadex.org/title/ce61de50-8f2e-4d77-80b8-5720b92f76a8/neko-no-hi', 'https://dynasty-scans.com/chapters/cat_day', null, 'Why can\'t this happen to my cats?', true, false);
+    this.addSeries(raw.m155745, [cat.ADULT_LIFE, cat.WORK, cat.MUSIC], 'https://mangadex.org/title/f7f170ed-3819-4952-bd89-2de784fcef11/ichikoe-nifuri-tachiaoi', 'https://dynasty-scans.com/series/voice_first_face_second_hollyhock', null, null, false, false);
     //this.addSeries(raw.)
 
     this.series.forEach(s => {

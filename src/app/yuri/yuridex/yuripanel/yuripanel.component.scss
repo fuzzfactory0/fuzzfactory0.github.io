@@ -27,7 +27,6 @@ a:hover, a:hover mat-icon {
   }
   .manga-info {
     margin-left: 32px;
-    margin-right: 220px;
     max-height: 600px;
     flex: 1 1 auto;
     .manga-title {
@@ -36,11 +35,13 @@ a:hover, a:hover mat-icon {
       font-size: 40px;
       margin-top: 0;
       margin-bottom: 16px;
+      margin-right: 220px;
     }
     .extra-info {
       display: flex;
       align-items: center;
       gap: 16px;
+      margin-right: 220px;
       .icons {
         display: flex;
         gap: 16px;
@@ -69,6 +70,7 @@ a:hover, a:hover mat-icon {
     .description {
       overflow-y: hidden;
       flex: 0 1 auto;
+      margin-right: 220px;
     }
     .links-header {
       font-weight: 500;
@@ -78,7 +80,7 @@ a:hover, a:hover mat-icon {
     .website-links {
       margin-left: 4px;
       display: flex;
-      gap: 32px;
+      gap: 16px;
       flex-wrap: wrap;
       .website-link, .website-link a {
         display: flex;
@@ -109,11 +111,6 @@ a:hover, a:hover mat-icon {
       margin-top: 32px;
       gap: 24px;
     }
-    .divider {
-      width: 2px;
-      height: 100%;
-      background-color: $yuri-text;
-    }
     .manga-staff {
       .staff-list {
         display: flex;
@@ -124,6 +121,7 @@ a:hover, a:hover mat-icon {
           align-items: center;
           gap: 8px;
           border-radius: 6px;
+          flex: 1 0 auto;
           img {
             object-fit: cover;
           }
@@ -139,17 +137,23 @@ a:hover, a:hover mat-icon {
         }
       }
     }
+    .trackers {
+      gap: 16px;
+      .favico {
+        width: auto!important;
+      }
+    }
   }
 
   .fuzz-comment {
     position: absolute;
-    right: 0;
+    right: 50px;
     bottom: 0;
     display: flex;
     align-items: flex-end;
     .bubble {
       position: relative;
-      right: 0px;
+      right: -30px;
       top: -100px;
       max-width: 500px;
       padding: 32px 64px;
@@ -172,7 +176,7 @@ a:hover, a:hover mat-icon {
       position: absolute;
       background-color: beige;
       border-radius: 50%;
-      right: 204px;
+      right: 184px;
       bottom: 42px;
       width: 35px;
       height: 35px;
@@ -180,11 +184,11 @@ a:hover, a:hover mat-icon {
     .circle:first-of-type {
       width: 20px;
       height: 20px;
-      right: 169px;
+      right: 149px;
       bottom: 45px;
     }
     .circle:last-of-type {
-      right: 237px;
+      right: 217px;
       bottom: 70px;
       width: 50px;
       height: 50px;
@@ -202,4 +206,13 @@ mat-icon {
 .column {
   display: flex;
   flex-direction: column;
+}
+
+.divider {
+  width: 2px;
+  height: 100%;
+  background-color: $yuri-text;
+  &.divider-32 {
+    height: 32px;
+  }
 }

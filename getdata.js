@@ -31,6 +31,7 @@ async function get(url) {
         staff {
           edges {
             node {
+              id
               name {
                 full
                 last
@@ -99,7 +100,7 @@ let interv = setInterval(() => {
       );
       const staff = rawstaff.map(s => {
         const name = (s.node.name.last && s.node.name.first) ? `${s.node.name.last} ${s.node.name.first}` : s.node.name.full;
-        return {name, image: s.node.image.medium, role: s.role}
+        return {name, image: s.node.image.medium, role: s.role, id: s.node.id}
       });
       all.push({
         ...d,

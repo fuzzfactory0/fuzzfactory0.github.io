@@ -49,6 +49,7 @@ interface CoverImageType {
 }
 
 interface Staff {
+  id: number;
   name: string;
   role: string;
   image: string;

@@ -41,12 +41,29 @@
               @if (site) {
                 <div class="website-link">
                   <div class="favico">
-                    <img [ngClass]="getFavico(site)" [src]="'assets/yuri/'+getFavico(site)+'.png'" alt="website icon" height="32px">
+                    <img [ngClass]="getFavico(site)" [src]="'assets/yuri/'+getFavico(site)+'.png'" height="32px">
                   </div>
                   <a [href]="site" target="_blank">{{getLabel(site)}} <mat-icon>open_in_new</mat-icon></a>
                 </div>
               }
             }
+            <div class="divider divider-32"></div>
+            <div class="row trackers">
+              @if (manga.anilistData.anilist) {
+                <div class="website-link">
+                  <div class="favico">
+                    <a [href]="manga.anilistData.anilist" target="_blank"><img [src]="'assets/yuri/anilist.png'" height="32px"><mat-icon>open_in_new</mat-icon></a>
+                  </div>
+                </div>
+              }
+              @if (manga.anilistData.mal) {
+                <div class="website-link">
+                  <div class="favico">
+                    <a [href]="manga.anilistData.mal" target="_blank"><img [src]="'assets/yuri/myanimelist.png'" height="32px"><mat-icon>open_in_new</mat-icon></a>
+                  </div>
+                </div>
+              }
+            </div>
           </div>
         </div>
       </div>

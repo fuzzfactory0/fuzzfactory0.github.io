@@ -19,7 +19,7 @@
           "options": {
             "outputPath": {
               "base": "/docs",
-              "browser": ""
+              "browser": "docs"
             },
             "index": "src/index.html",
             "polyfills": [

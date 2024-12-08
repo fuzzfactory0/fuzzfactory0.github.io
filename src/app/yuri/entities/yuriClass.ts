@@ -4,10 +4,10 @@ export interface FullSeries {
   id: number;
   anilistData: AnilistData,
   categories: Category[];
-  mangadex: string;
-  dynasty: string;
+  mangadex: string | null;
+  dynasty: string | null;
   official: string | null;
-  comment: string;
+  comment: string | null;
   completeTranslation: boolean;
   nsfw: boolean;
   forceJapanese: boolean;
@@ -25,6 +25,7 @@ export interface AnilistData {
   coverImage: CoverImageType;
   chapters: number | null;
   volumes: number | null;
+  staff: Staff[];
 }
 
 export interface GraphQLResponse {
@@ -45,4 +46,10 @@ interface CoverImageType {
   large: string;
   medium: string;
   color: string | null;
+}
+
+interface Staff {
+  name: string;
+  role: string;
+  image: string;
 }

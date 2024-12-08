@@ -1,0 +1,27 @@
+@import '../../../../assets/variables.scss';
+
+h1, h2, h3, p, a, span, u {
+  font-family: "Roboto";
+  color: $yuri-text;
+}
+a:hover {
+  color: $yuri-violet;
+}
+.yurifaq-container {
+  padding: 50px 400px;
+  overflow-y: auto;
+  height: 100%;
+  span {
+    color: $yuri-violet;
+    font-weight: 500;
+  }
+  h2 {
+    letter-spacing: 0.5px;
+  }
+  p {
+    font-size: 18px;
+    span {
+      font-size: 1.5em;
+    }
+  }
+}

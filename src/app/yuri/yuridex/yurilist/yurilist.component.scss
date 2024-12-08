@@ -1,0 +1,181 @@
+@use '@angular/material' as mat;
+@import '../../../../assets/variables.scss';
+
+h1, h2, h3, p, a, span {
+  font-family: "Roboto";
+  color: $yuri-text;
+}
+a:hover {
+  color: $yuri-violet;
+}
+mat-icon {
+  color: $yuri-text;
+}
+.yuridex-sidebar {
+  min-width: 300px;
+  width: 300px;
+  background-color: #3c3c3c;
+  border-right: 1px solid #6c6c6c;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  .sidebar-buttons {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      font-weight: 500;
+      margin-top: 0;
+      font-size: 20px;
+      margin: 0;
+    }
+  }
+  .inputs {
+    padding: 0 16px;
+    gap: 8px;
+    .row {
+      display: flex;
+      input {
+        margin: 0!important;
+        width: 100%;
+        height: 32px;
+        border-radius: 8px;
+        background-color: #2f2f2f;
+        border: 1px solid #1c1c1c;
+        color: $yuri-text;
+        margin-bottom: 20px;
+        padding: 0 12px;
+        font-size: 16px;
+        &:focus {
+          outline: none;
+        }
+      }
+      button {
+        height: 32px;
+        padding: 0;
+        border-radius: 8px;
+      }
+    }
+  }
+  .sidebar-content {
+    padding: 0 16px 16px;
+    overflow-y: auto;
+    a {
+      display: block;
+      font-size: 16px;
+      margin: 4px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      background: #2F2F2F;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    
+    .filter-pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      mat-chip {
+        &.pill-red {
+          @include mat.chips-overrides((
+            outline-color: $yuri-red,
+            label-text-color: $yuri-red,
+          ));
+        }
+        &.pill-green {
+          @include mat.chips-overrides((
+            outline-color: $yuri-green,
+            label-text-color: $yuri-green,
+          ));
+        }
+      }
+    }
+  }
+}
+.yuridex-content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 100px 0 20px;
+  .category-container {
+    .category-header {
+      a {
+        display: inline-block;
+        margin-bottom: 0;
+        letter-spacing: 2px;
+        font-size: 2em;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+      p {
+        margin-top: 6px;
+        font-size: 18px;
+      }
+      .red-text {
+        color: $yuri-red;
+      }
+      .green-text {
+        color: $yuri-green;
+      }
+    }
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 10px 55px;
+      color: white;
+      .manga-container {
+        width: 250px;
+        height: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transition: transform 0.2s;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.1);
+        }
+        .manga-cover {
+          width: 210px;
+          height: 300px;
+          background-size: cover;
+          background-position-x: right;
+          border-radius: 8px;
+          transition: box-shadow 0.2s;
+          &:hover {
+            box-shadow: 0px 0px 20px 0px var(--shadow-color);
+          }
+          &#cover-180856, &#cover-183343 {
+            background-position-x: left;
+          }
+        }
+        .manga-title {
+          margin-bottom: 0;
+          margin-top: 6px;
+          font-size: 18px;
+          font-weight: normal;
+          width: 210px;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .sidebar-buttons {
+    label {
+      color: $yuri-text!important;
+      font-size: 18px;
+    }
+    mat-chip {
+      .mdc-evolution-chip__cell {
+        overflow: hidden!important;
+      }
+    }
+  }
+}

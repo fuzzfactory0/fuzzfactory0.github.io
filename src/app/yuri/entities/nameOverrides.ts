@@ -47,4 +47,12 @@ export const englishOverrides = [
   { id: 173101, english: `I (I) Love (Love) You (You)` },
   { id: 115093, english: `A World Exists For You` },
   { id: 105344, english: `Do You Still Rely On MAGIC?` },
+  { id: 116286, english: `A Girl Who Can't Speak Thinks "She Is Too Kind."` },
+  { id: 140684, english: `The Demon Disappears Through a Lens` },
+  { id: 183343, english: `Belladonna's Lover` },
+  { id: 129835, english: `If It Rains Next Week` },
+  { id: 174603, english: `This Is Not Heaven, But...` },
+  { id: 179139, english: `The Role Of The Femme Fatale` },
+  { id: 179296, english: `Am I About to Join a Kill-or-Be-Killed Love Triangle?` },
+
 ]

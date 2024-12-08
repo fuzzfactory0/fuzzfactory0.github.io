@@ -1,0 +1,64 @@
+<div class="yuripanel-container" [ngStyle]="{'--manga-color': manga.anilistData.coverImage.color || 'white'}">
+  <div class="row">
+    <div class="column">
+      <div class="manga-cover">
+        <div [id]="'cover-'+manga.id" [ngStyle]="{'background-image': 'url(' + getCover() + ')'}"></div>
+      </div>
+    </div>
+    <div class="column manga-info">
+      <h1 class="manga-title">{{getTitle()}}</h1>
+      <div class="tag-container">
+        @for (tag of manga.categories; track $index) {
+          <mat-chip (click)="goToCategory(tag)">{{tag.name}}</mat-chip>
+        }
+      </div>
+      <p class="description" [innerHTML]="manga.anilistData.description"></p>
+      <div class="row staff-links">
+        <div class="manga-staff">
+          <div class="staff-list">
+            @for (staff of manga.anilistData.staff; track $index) {
+              <div class="staff">
+                <img [src]="staff.image || 'https://s4.anilist.co/file/anilistcdn/staff/large/default.jpg'" height="50px" width="50px">
+                <div class="staff-text">
+                  <h3>{{staff.name}}</h3>
+                  <p>{{staff.role}}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="links">
+          <div class="website-links">
+            @for (site of [manga.mangadex, manga.dynasty, manga.official]; track $index) {
+              @if (site) {
+                <div class="website-link">
+                  <div class="favico">
+                    <img [ngClass]="getFavico(site)" [src]="'assets/yuri/'+getFavico(site)+'.png'" alt="website icon" height="32px">
+                  </div>
+                  <a [href]="site" target="_blank">{{getLabel(site)}} <mat-icon>open_in_new</mat-icon></a>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (manga.comment) {
+    <div class="fuzz-comment">
+      <div class="bubble">
+        <h3 class="says">
+          Fuzz says...
+        </h3>
+        <p class="comment" [innerHTML]="manga.comment">
+         
+        </p>
+      </div>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <img class="sakurako" src="assets/yuri/thonk.png" height="200px">
+    </div>
+  }
+</div>

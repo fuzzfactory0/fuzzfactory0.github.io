@@ -1,16 +1,11 @@
 <div class="yuridex-container">
   <nav class="yuridex-header">
-    <h1 class="schizo">Local yuri schizo's curated list of yuri manga</h1>
+    <h1 style="display: inline-block" class="schizo">Local yuri schizo's curated list of yuri manga</h1>
+    <div class="header-controls">
+      <a href="yuri/faq">FAQ</a>
+    </div>
   </nav>
   <div class="yuridex-body">
-    <nav class="yuridex-sidebar">
-    </nav>
-    <div class="grid-container">
-      <div class="manga-container" *ngFor="let manga of series">
-        <div class="manga-cover" [ngStyle]="{'background-image': 'url(' + getCover(manga) + ')'}" [id]="'cover-'+manga.id">
-        </div>
-        <h3 class="manga-title">{{getTitle(manga)}}</h3>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

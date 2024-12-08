@@ -1,0 +1,187 @@
+@use '@angular/material' as mat;
+@import '../../../../assets/variables.scss';
+
+h1, h2, h3, p, a, span {
+  font-family: "Roboto";
+  color: $yuri-text;
+}
+a:hover, a:hover mat-icon {
+  color: $yuri-violet;
+}
+.yuripanel-container {
+  padding: 32px;
+  .manga-cover {
+    div {
+      height: 600px;
+      width: 420px;
+      background-size: cover;
+      background-position: right;
+      &#cover-180856, &#cover-183343 {
+        background-position-x: left;
+      }
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -10px 10px 0px 0px var(--manga-color);
+  }
+  .manga-info {
+    margin-left: 32px;
+    margin-right: 220px;
+    max-height: 600px;
+    flex: 1 1 auto;
+    .manga-title {
+      color: white;
+      font-weight: 500;
+      font-size: 40px;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      mat-chip:hover {
+        @include mat.chips-overrides((
+          outline-color: $yuri-violet,
+          label-text-color: $yuri-violet,
+        ));
+      }
+    }
+    .description {
+      overflow-y: hidden;
+      flex: 0 1 auto;
+    }
+    .links-header {
+      font-weight: 500;
+      margin: 0;
+      margin-bottom: 8px;
+    }
+    .website-links {
+      margin-left: 4px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      .website-link, .website-link a {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+      }
+      .website-link {
+        gap: 6px;
+        .favico {
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          border-radius: 4px;
+          img {
+            &.mangadex, &.mangaplus {
+              filter: 
+                drop-shadow(1px 1px 0 white)
+                drop-shadow(-1px -1px 0 white)
+                drop-shadow(1px -1px 0 white)
+                drop-shadow(-1px 1px 0 white);
+            }
+          }
+        }
+      }
+    }
+    .staff-links {
+      align-items: center;
+      margin-top: 32px;
+      gap: 24px;
+    }
+    .divider {
+      width: 2px;
+      height: 100%;
+      background-color: $yuri-text;
+    }
+    .manga-staff {
+      .staff-list {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        .staff {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-radius: 6px;
+          img {
+            object-fit: cover;
+          }
+          .staff-text {
+            h3 {
+              margin: 0;
+              font-weight: 500;
+            }
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .fuzz-comment {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    .bubble {
+      position: relative;
+      right: 0px;
+      top: -100px;
+      max-width: 500px;
+      padding: 32px 64px;
+      border-radius: 100px;
+      background-color: beige;
+      .says, .comment {
+        color: black;
+        font-family: "Playpen Sans", cursive;
+        margin-top: 0;
+      }
+      .comment {
+        text-align: center;
+        margin-bottom: 0;
+        a {
+          color: $yuri-violet;
+        }
+      }
+    }
+    .circle {
+      position: absolute;
+      background-color: beige;
+      border-radius: 50%;
+      right: 204px;
+      bottom: 42px;
+      width: 35px;
+      height: 35px;
+    }
+    .circle:first-of-type {
+      width: 20px;
+      height: 20px;
+      right: 169px;
+      bottom: 45px;
+    }
+    .circle:last-of-type {
+      right: 237px;
+      bottom: 70px;
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+mat-icon {
+  color: $yuri-text;
+}
+
+.row {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}

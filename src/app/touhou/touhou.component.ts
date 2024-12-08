@@ -13,7 +13,6 @@ export class TouhouComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigateByUrl('touhou/goburin');
   }
 
 }

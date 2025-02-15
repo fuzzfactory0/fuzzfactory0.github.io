@@ -1,15 +1,15 @@
 @use '@angular/material' as mat;
-@import '../../../../assets/variables.scss';
+@use '../../../../assets/variables.scss';
 
 h1, h2, h3, p, a, span {
   font-family: "Roboto";
-  color: $yuri-text;
+  color: variables.$yuri-text;
 }
 a:hover {
-  color: $yuri-violet;
+  color: variables.$yuri-violet;
 }
 mat-icon {
-  color: $yuri-text;
+  color: variables.$yuri-text;
 }
 .yuridex-sidebar {
   min-width: 300px;
@@ -45,7 +45,7 @@ mat-icon {
         border-radius: 8px;
         background-color: #2f2f2f;
         border: 1px solid #1c1c1c;
-        color: $yuri-text;
+        color: variables.$yuri-text;
         margin-bottom: 20px;
         padding: 0 12px;
         font-size: 16px;
@@ -82,14 +82,14 @@ mat-icon {
       mat-chip {
         &.pill-red {
           @include mat.chips-overrides((
-            outline-color: $yuri-red,
-            label-text-color: $yuri-red,
+            outline-color: variables.$yuri-red,
+            label-text-color: variables.$yuri-red,
           ));
         }
         &.pill-green {
           @include mat.chips-overrides((
-            outline-color: $yuri-green,
-            label-text-color: $yuri-green,
+            outline-color: variables.$yuri-green,
+            label-text-color: variables.$yuri-green,
           ));
         }
       }
@@ -115,10 +115,10 @@ mat-icon {
         font-size: 18px;
       }
       .red-text {
-        color: $yuri-red;
+        color: variables.$yuri-red;
       }
       .green-text {
-        color: $yuri-green;
+        color: variables.$yuri-green;
       }
     }
     .grid-container {
@@ -154,12 +154,15 @@ mat-icon {
             drop-shadow(1px -1px 0 white)
             drop-shadow(-1px 1px 0 white);
           mat-icon {
-            transform: scale(1.5);          
+            transform: scale(1.5);    
+            &.blue {
+              color: variables.$yuri-blue;
+            }      
             &.green {
-              color: $yuri-green-dark;
+              color: variables.$yuri-green-dark;
             }
             &.red {
-              color: $yuri-red-dark;
+              color: variables.$yuri-red-dark;
             }
           }
         }
@@ -192,12 +195,69 @@ mat-icon {
 ::ng-deep {
   .sidebar-buttons {
     label {
-      color: $yuri-text!important;
+      color: variables.$yuri-text!important;
       font-size: 18px;
     }
     mat-chip {
       .mdc-evolution-chip__cell {
         overflow: hidden!important;
+      }
+    }
+  }
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .yuridex-sidebar {
+    position: absolute;
+    top: 57px;
+    z-index: 1000;
+    min-width: 100vw;
+    height: calc(100vh - 57px);
+    transition: ease-in-out .1s left;
+    &.expanded {
+      left: 0;
+    }
+    &.collapsed {
+      left: -100vw;
+    }
+    .sidebar-content {
+      text-align: center;
+      button.only-mobile {
+        margin-top: 16px;
+      }
+    }
+  }
+  .yuridex-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 0 16px;
+    .category-container {
+      .category-header {
+        text-align: center;
+      }
+      .grid-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px 10px;
+        .manga-container {
+          width: 44vw;
+          padding: 0;
+          .manga-icons {
+            padding: 6px 14px;
+            gap: 8px;
+            mat-icon {
+              transform: scale(1.3);    
+            }
+          }
+          .manga-cover {
+            width: 40vw;
+            height: 60vw;
+          }
+          .manga-title {
+            width: 40vw;
+          }
+        }
       }
     }
   }

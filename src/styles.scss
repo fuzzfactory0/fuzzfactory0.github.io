@@ -2,6 +2,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@use './assets/variables.scss';
 
 html {
   @include mat.theme((
@@ -47,4 +48,36 @@ a {
     white-space: nowrap!important;
     text-overflow: ellipsis!important;
   }
+}
+
+.fuzz-comment {
+  .comment {
+    * {
+      font-family: "Playpen Sans", cursive;
+    }
+    a {
+      color: variables.$yuri-violet3;
+    }
+  }
+}
+
+.only-mobile {
+  display: none!important;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .not-mobile {
+    display: none!important;
+  }
+  .only-mobile {
+    display: unset!important;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }

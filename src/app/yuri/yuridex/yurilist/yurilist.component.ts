@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { FullSeries } from '../../entities/yuriClass';
 import * as cat from '../../entities/categories';
 import { Category } from '../../entities/categories';
 import { FullCategory } from '../../entities/categories';
-import { Subscription } from 'rxjs';
+import { Title } from "@angular/platform-browser";
+import { TogglesService } from '../../services/toggles.service';
 
 
 @Component({
@@ -17,7 +18,13 @@ import { Subscription } from 'rxjs';
 
 export class YurilistComponent implements OnInit {
 
-    constructor(private data: DataService, private router: Router, private route: ActivatedRoute) {
+    constructor(
+      private data: DataService,
+      private router: Router,
+      private route: ActivatedRoute,
+      private title: Title,
+      private toggles: TogglesService
+    ) {
     this.series = this.data.getData();
     this.series.sort((a, b) => this.getTitle(a).localeCompare(this.getTitle(b)));
   }
@@ -32,7 +39,14 @@ export class YurilistComponent implements OnInit {
   excludeOngoing: boolean = false;
   categoryFilter = '';
 
+  isMobile = (window.innerWidth / window.innerHeight) <= 1;
+  showMenu = false;
+
   ngOnInit(): void {
+    this.toggles.showMenu.subscribe(value => {
+      this.showMenu = value;
+    });
+    this.title.setTitle('YuriDex - Yuri Manga Index by a Yuri Schizo');
     this.route.fragment.subscribe(frag => {
       if (frag) {
         this.delayedScroll(frag);
@@ -46,6 +60,15 @@ export class YurilistComponent implements OnInit {
       this.displayCategories.sort((a, b) => a.name.localeCompare(b.name));
     });
     this.filteredSeries = [...this.series];
+
+    const snap = this.route.snapshot;
+    if (snap.queryParams['include'] || snap.queryParams['exclude']) {
+      this.filterInclude = snap.queryParams['include']?.split(',').map((n: string) => parseInt(n)) || [];
+      this.filterExclude = snap.queryParams['exclude']?.split(',').map((n: string) => parseInt(n)) || [];
+      this.filterMode = true;
+      this.filterSeries();
+      console.log('INIT RUN')
+    }
   }
 
   showDetails(series: FullSeries) {
@@ -82,7 +105,28 @@ export class YurilistComponent implements OnInit {
     return this.categories.find(cat => cat.id == id)?.name;
   }
 
+  isAnthology(manga: FullSeries) {
+    return manga.categories.includes(cat.ANTHOLOGY);
+  }
+
+  isOneshot(manga: FullSeries) {
+    return manga.anilistData.chapters == 1 && manga.completeTranslation;
+  }
+
   filterSeries() {
+    const queryParams: Params = {
+      include: this.filterInclude.join(',') || undefined,
+      exclude: this.filterExclude.join(',') || undefined
+    };
+
+    this.router.navigate(
+      [], 
+      {
+        relativeTo: this.route,
+        queryParams, 
+        queryParamsHandling: 'merge',
+      }
+    );
     this.filteredSeries = this.series.filter(s => {
       const isIncluded = this.filterInclude.every(id => s.categories.some(c => c.id == id));
       const isExcluded = this.filterExclude.some(id => s.categories.some(c => c.id == id));
@@ -118,5 +162,9 @@ export class YurilistComponent implements OnInit {
   resetScroll() {
     const el = document.getElementById('filter-results') || document.getElementById('category-1');
     el?.scrollIntoView();
+  }
+
+  hideMenu() {
+    this.toggles.menuOff();
   }
 }

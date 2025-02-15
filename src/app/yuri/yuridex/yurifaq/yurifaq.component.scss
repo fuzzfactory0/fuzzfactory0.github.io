@@ -1,18 +1,18 @@
-@import '../../../../assets/variables.scss';
+@use '../../../../assets/variables.scss';
 
 h1, h2, h3, p, a, span, u {
   font-family: "Roboto";
-  color: $yuri-text;
+  color: variables.$yuri-text;
 }
 a:hover {
-  color: $yuri-violet;
+  color: variables.$yuri-violet;
 }
 .yurifaq-container {
-  padding: 50px 400px;
+  padding: 50px 20vw;
   overflow-y: auto;
   height: 100%;
   span {
-    color: $yuri-violet;
+    color: variables.$yuri-violet;
     font-weight: 500;
   }
   h2 {
@@ -22,6 +22,27 @@ a:hover {
     font-size: 18px;
     span {
       font-size: 1.5em;
+    }
+  }
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .yurifaq-container {
+    padding: 50px 32px;
+    overflow-y: auto;
+    height: 100%;
+    span {
+      color: variables.$yuri-violet;
+      font-weight: 500;
+    }
+    h2 {
+      letter-spacing: 0.5px;
+    }
+    p {
+      font-size: 18px;
+      span {
+        font-size: 1.5em;
+      }
     }
   }
 }

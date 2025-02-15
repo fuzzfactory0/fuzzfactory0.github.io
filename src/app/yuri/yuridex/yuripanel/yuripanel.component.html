@@ -1,4 +1,4 @@
-<div class="yuripanel-container" [ngStyle]="{'--manga-color': manga.anilistData.coverImage.color || 'white'}">
+<div class="yuripanel-container" [ngStyle]="{'--manga-color': manga.anilistData.coverImage.color || '#dddddd'}">
   <div class="row">
     <div class="column">
       <div class="manga-cover">
@@ -6,7 +6,8 @@
       </div>
     </div>
     <div class="column manga-info">
-      <h1 class="manga-title">{{getTitle()}}</h1>
+      <h1 class="manga-title" [ngClass]="{'padded': !manga.anilistData.title.english}">{{getTitle()}}</h1>
+      <i class="romaji" *ngIf="manga.anilistData.title.english">{{manga.anilistData.title.romaji}}</i>
       <div class="extra-info">
         <div class="tag-container">
           @for (tag of manga.categories; track $index) {
@@ -15,11 +16,19 @@
         </div>
         <div class="divider" *ngIf="manga.nsfw || manga.completeTranslation"></div>
         <div class="icons">
+          <mat-icon *ngIf="isAnthology(manga)" matTooltip="This manga is an anthology (a collection of independent one-shots)" fontSet="material-symbols-outlined" class="blue">book_6</mat-icon>
+          <mat-icon *ngIf="isOneshot(manga)" matTooltip="This manga is a one-shot (magazine published, doujinshi, or self-published online)" class="blue">looks_one</mat-icon>
           <mat-icon *ngIf="manga.completeTranslation" matTooltip="This manga is finished and fully translated" class="green">check_circle</mat-icon>
           <mat-icon *ngIf="manga.nsfw" matTooltip="This manga contains some degree of NSFW content" class="red">18_up_rating</mat-icon>
         </div>
       </div>
-      <p class="description" [innerHTML]="manga.anilistData.description"></p>
+      <div class="description not-mobile">
+        <p [innerHTML]="manga.anilistData.description"></p>
+      </div>
+      <div class="description only-mobile" [ngClass]="{'limited-height':!displayMoreDesc}">
+        <p [innerHTML]="manga.anilistData.description"></p>
+        <button class="more-button" (click)="toggleDisplayMore()">{{displayMoreDesc ? 'Less' : 'More...'}}</button>
+      </div>
       <div class="row staff-links">
         <div class="manga-staff">
           <div class="staff-list">
@@ -34,20 +43,27 @@
             }
           </div>
         </div>
-        <div class="divider"></div>
+        <div class="divider divider-horizontal"></div>
         <div class="links">
           <div class="website-links">
-            @for (site of [manga.mangadex, manga.dynasty, manga.official]; track $index) {
-              @if (site) {
-                <div class="website-link">
-                  <div class="favico">
-                    <img [ngClass]="getFavico(site)" [src]="'assets/yuri/'+getFavico(site)+'.png'" height="32px">
+            <p class="read-on only-mobile">Read on</p>
+            <div class="reader-links">
+              @for (site of [manga.mangadex, manga.dynasty, manga.official]; track $index) {
+                @if (site) {
+                  <div class="website-link">
+                    <div class="favico">
+                      <img [ngClass]="getFavico(site)" [src]="'assets/yuri/'+getFavico(site)+'.png'" height="32px">
+                    </div>
+                    <a class="not-mobile" [href]="site" target="_blank">{{getLabel(site)}} <mat-icon>open_in_new</mat-icon></a>
+                    <a class="only-mobile" [matTooltip]="getLabel(site)" [href]="site" target="_blank"><mat-icon>open_in_new</mat-icon></a>
                   </div>
-                  <a [href]="site" target="_blank">{{getLabel(site)}} <mat-icon>open_in_new</mat-icon></a>
-                </div>
+                }
               }
+            </div>
+            @if (manga.anilistData.anilist || manga.anilistData.mal) {
+              <div class="divider divider-32 not-mobile" ></div>
+              <p class="track-on only-mobile">Track on</p>
             }
-            <div class="divider divider-32"></div>
             <div class="row trackers">
               @if (manga.anilistData.anilist) {
                 <div class="website-link">
@@ -75,14 +91,12 @@
         <h3 class="says">
           Fuzz says...
         </h3>
-        <p class="comment" [innerHTML]="manga.comment">
-         
-        </p>
+        <p class="comment" [innerHTML]="manga.comment"></p>
       </div>
       <i class="circle"></i>
       <i class="circle"></i>
       <i class="circle"></i>
-      <img class="sakurako" src="assets/yuri/thonk.png" height="200px">
+      <img class="sakurako" src="assets/yuri/thonk.png" height="250px">
     </div>
   }
 </div>

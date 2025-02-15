@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +9,11 @@ import { Router } from '@angular/router';
     standalone: false
 })
 export class TouhouComponent implements OnInit {
-  title = 'Fuzz\'s dumpster';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private title: Title) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Touhou things');
   }
 
 }

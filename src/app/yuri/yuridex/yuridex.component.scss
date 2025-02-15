@@ -1,4 +1,4 @@
-@import '../../../assets/variables.scss';
+@use '../../../assets/variables.scss';
 
 ::ng-deep {
   app-yurilist {
@@ -8,7 +8,7 @@
 }
 
 a:hover {
-  color: $yuri-violet;
+  color: variables.$yuri-violet;
 }
 .yuridex-container {
   background-color: #2f2f2f;
@@ -18,10 +18,10 @@ a:hover {
   height: 100vh;
   h1, h2, h3, p, a, span {
     font-family: "Roboto";
-    color: $yuri-text;
+    color: variables.$yuri-text;
   }
   mat-icon {
-    color: $yuri-text;
+    color: variables.$yuri-text;
   }
   .yuridex-header {
     background-color: #3c3c3c;
@@ -31,9 +31,50 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    button {
+      mat-icon {
+        color: variables.$yuri-violet;
+        transform: scale(1.5);
+      }
+      margin-right: 16px;
+    }
     h1 {
       margin: 0;
-      color: $yuri-violet;
+      margin-top: 4px;
+      flex: 1 0 auto;
+      color: variables.$yuri-violet;
+      font-family: "Playpen Sans", cursive;
+    }
+    .stats-container {
+      display: flex;
+      align-items: center;
+      margin-right: 16px;
+      .stats {
+        display: flex;
+        align-items: center;
+        mat-icon {
+          margin-right: 4px;
+          color: variables.$yuri-violet;
+        }
+      }
+    }
+    .last-updated {
+      margin-right: 16px;
+      margin-top: 1px;
+    }
+    .header-controls {
+      a {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        &, mat-icon {
+          color: variables.$yuri-violet;
+          text-align: c;
+        }
+        mat-icon {
+          margin-right: 4px;
+        }
+      }
     }
   }
   .yuridex-body {
@@ -41,6 +82,13 @@ a:hover {
     display: flex;
     overflow: hidden;
   }
+}
+
+.divider {
+  width: 2px;
+  height: 24px;
+  background-color: variables.$yuri-text;
+  margin: 0 16px;
 }
 
 ::ng-deep {
@@ -57,13 +105,37 @@ a:hover {
       
       /* Handle */
       ::-webkit-scrollbar-thumb {
-        background: $yuri-violet;
+        background: variables.$yuri-violet;
         min-height: 40px;
         border-radius: 4px;
         &:hover {
-          background-color: $yuri-violet2;
+          background-color: variables.$yuri-violet2;
         }
       }
     }
   }
 }
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .yuridex-container {
+    .yuridex-header {
+      min-height: fit-content;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 16px;
+      justify-content: space-between;
+      button {
+        margin-right: 0;
+        mat-icon {
+          height: 26px;
+        }
+      }
+      .stats-container {
+        margin: 0;
+        justify-content: center;
+      }
+    }
+  }
+} 

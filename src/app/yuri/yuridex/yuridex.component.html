@@ -1,8 +1,21 @@
 <div class="yuridex-container">
   <nav class="yuridex-header">
-    <h1 style="display: inline-block" class="schizo">Local yuri schizo's curated list of yuri manga</h1>
-    <div class="header-controls">
-      <a href="yuri/faq">FAQ</a>
+    <button class="not-mobile" mat-icon-button (click)="goHome()"><mat-icon>home</mat-icon></button>
+    <button class="only-mobile" *ngIf="!isHome()" mat-icon-button (click)="goHome()"><mat-icon>home</mat-icon></button>
+    <button class="only-mobile" *ngIf="isHome()" mat-icon-button (click)="toggleMenu()"><mat-icon>menu</mat-icon></button>
+    <h1 class="not-mobile">Local yuri schizo's curated list of yuri manga</h1>
+    <span class="stats-container">
+      <span class="stats"><mat-icon matTooltip="Series" fontSet="material-symbols-outlined">book_2</mat-icon> {{series}}</span>
+      <div class="divider"></div>
+      <span class="stats"><mat-icon matTooltip="Oneshots - includes both entries listed as one-shots and every one-shot included in listed anthologies.">looks_one</mat-icon> {{oneshots}}</span>
+      <div class="divider"></div>
+      <span class="stats"><mat-icon matTooltip="Last updated">update</mat-icon> {{lastUpdated}}</span>
+    </span>
+    <div class="header-controls not-mobile">
+      <a href="yuri/faq">
+        <mat-icon>help</mat-icon>
+        FAQ
+      </a>
     </div>
   </nav>
   <div class="yuridex-body">

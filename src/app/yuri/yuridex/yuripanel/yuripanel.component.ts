@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { FullSeries } from '../../entities/yuriClass';
-import { Category } from '../../entities/categories';
+import { ANTHOLOGY, Category } from '../../entities/categories';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-yuripanel',
@@ -12,14 +13,16 @@ import { Category } from '../../entities/categories';
 })
 export class YuripanelComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private data: DataService, private router: Router) {
+  constructor(private route: ActivatedRoute, private data: DataService, private router: Router, private title: Title) {
     const id = parseInt(this.route.snapshot.paramMap.get('id') || '0');
     this.manga = this.data.getSeries(id)!;
   }
 
   manga: FullSeries;
+  displayMoreDesc = false;
   
   ngOnInit(): void {
+    this.title.setTitle(this.getTitle() + ' - YuriDex');
   }
 
   getCover(): string {
@@ -49,9 +52,21 @@ export class YuripanelComponent implements OnInit {
       return 'Mangadex';
     }
     if (site.includes('dynasty-scans')) {
-      return 'DynastyScans';
+      return 'Dynasty';
     }
     return 'Official EN'
+  }
+
+  isAnthology(manga: FullSeries) {
+    return manga.categories.includes(ANTHOLOGY);
+  }
+
+  isOneshot(manga: FullSeries) {
+    return manga.anilistData.chapters == 1 && manga.completeTranslation;
+  }
+
+  toggleDisplayMore() {
+    this.displayMoreDesc = !this.displayMoreDesc;
   }
 
   goToCategory(category: Category) {

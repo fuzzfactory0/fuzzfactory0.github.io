@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng deploy",
+    "build": "node writeDate.js && ng deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

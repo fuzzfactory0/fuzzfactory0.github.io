@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
     standalone: false
 })
 export class AppComponent implements OnInit {
-  title = 'fuzzs-dumpster';
 
   ngOnInit(): void {
   }

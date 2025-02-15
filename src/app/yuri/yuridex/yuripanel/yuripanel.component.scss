@@ -1,15 +1,15 @@
 @use '@angular/material' as mat;
-@import '../../../../assets/variables.scss';
+@use '../../../../assets/variables.scss';
 
-h1, h2, h3, p, a, span {
+h1, h2, h3, p, a, span, i {
   font-family: "Roboto";
-  color: $yuri-text;
+  color: variables.$yuri-text;
 }
 a:hover, a:hover mat-icon {
-  color: $yuri-violet;
+  color: variables.$yuri-violet;
 }
 .yuripanel-container {
-  padding: 32px;
+  padding: 32px 64px;
   .manga-cover {
     div {
       height: 600px;
@@ -34,8 +34,14 @@ a:hover, a:hover mat-icon {
       font-weight: 500;
       font-size: 40px;
       margin-top: 0;
-      margin-bottom: 16px;
+      margin-bottom: 0px;
       margin-right: 220px;
+      &.padded {
+        margin-bottom: 16px;
+      }
+    }
+    .romaji {
+      margin-bottom: 16px;
     }
     .extra-info {
       display: flex;
@@ -48,11 +54,14 @@ a:hover, a:hover mat-icon {
         mat-icon {
           transform: scale(1.5);
         }
+        .blue {
+          color: variables.$yuri-blue-light;
+        }
         .green {
-          color: $yuri-green;
+          color: variables.$yuri-green;
         }
         .red {
-          color: $yuri-red;
+          color: variables.$yuri-red;
         }
       }
     }
@@ -62,26 +71,32 @@ a:hover, a:hover mat-icon {
       gap: 6px;
       mat-chip:hover {
         @include mat.chips-overrides((
-          outline-color: $yuri-violet,
-          label-text-color: $yuri-violet,
+          outline-color: variables.$yuri-violet,
+          label-text-color: variables.$yuri-violet,
         ));
       }
     }
     .description {
-      overflow-y: hidden;
+      overflow-y: auto;
       flex: 0 1 auto;
+      margin: 16px 0;
       margin-right: 220px;
-    }
-    .links-header {
-      font-weight: 500;
-      margin: 0;
-      margin-bottom: 8px;
+      direction: rtl;
+      p {
+        margin: 0;
+        margin-left: 16px;
+        direction: ltr;
+      }
     }
     .website-links {
       margin-left: 4px;
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
+      .reader-links {
+        display: flex;
+        gap: 16px; 
+      }
       .website-link, .website-link a {
         display: flex;
         align-items: center;
@@ -107,7 +122,7 @@ a:hover, a:hover mat-icon {
       }
     }
     .staff-links {
-      align-items: center;
+      flex-direction: column;
       margin-top: 32px;
       gap: 24px;
     }
@@ -116,6 +131,8 @@ a:hover, a:hover mat-icon {
         display: flex;
         gap: 16px;
         flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         .staff {
           display: flex;
           align-items: center;
@@ -152,6 +169,7 @@ a:hover, a:hover mat-icon {
     display: flex;
     align-items: flex-end;
     .bubble {
+      z-index: 1;
       position: relative;
       right: -30px;
       top: -100px;
@@ -164,32 +182,32 @@ a:hover, a:hover mat-icon {
         font-family: "Playpen Sans", cursive;
         margin-top: 0;
       }
+      .says {
+        margin-left: -16px;
+      }
       .comment {
         text-align: center;
         margin-bottom: 0;
-        a {
-          color: $yuri-violet;
-        }
       }
     }
     .circle {
       position: absolute;
       background-color: beige;
       border-radius: 50%;
-      right: 184px;
-      bottom: 42px;
+      right: 221px;
+      bottom: 60px;
       width: 35px;
       height: 35px;
     }
     .circle:first-of-type {
       width: 20px;
       height: 20px;
-      right: 149px;
-      bottom: 45px;
+      right: 188px;
+      bottom: 69px;
     }
     .circle:last-of-type {
-      right: 217px;
-      bottom: 70px;
+      right: 260px;
+      bottom: 80px;
       width: 50px;
       height: 50px;
     }
@@ -197,7 +215,7 @@ a:hover, a:hover mat-icon {
 }
 
 mat-icon {
-  color: $yuri-text;
+  color: variables.$yuri-text;
 }
 
 .row {
@@ -211,8 +229,130 @@ mat-icon {
 .divider {
   width: 2px;
   height: 100%;
-  background-color: $yuri-text;
+  background-color: variables.$yuri-text;
   &.divider-32 {
     height: 32px;
+  }
+  &.divider-horizontal {
+    height: 2px;
+    width: 80%;
+  }
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .yuripanel-container {
+    padding: 16px 8px 0 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 57px);
+    .row {
+      flex-direction: column;
+      align-items: center;
+    }
+    &>.row {
+      padding-bottom: 32px;
+    }
+    .manga-cover {
+      display: block;
+      box-shadow: -10px 10px 0px 0px var(--manga-color);
+      width: fit-content;
+      div {
+        width: 80vw;
+        height: 120vw;
+      }
+    }
+    .manga-info {
+      margin-left: 0;
+      margin-top: 16px;
+      max-height: unset;
+      .manga-title {
+        font-size: 24px;
+        margin: 0;
+      }
+      .extra-info {
+        flex-direction: column;
+        margin: 0;
+      }
+      .description.only-mobile {
+        margin-right: 0;
+        direction: ltr;
+        display: flex!important;
+        flex-direction: column;
+        justify-content: center;
+        .more-button {
+          background: transparent;
+          border: none;
+          color: variables.$yuri-violet;
+          font-size: 16px;
+        }
+        &.limited-height {
+          & > p {
+            overflow: hidden;
+            max-height: 200px;
+          }
+          
+        }
+        & > p {
+          margin: 0;
+        }
+      }
+      .links {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .website-links {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        p {
+          margin: 0;
+        }
+      }
+      .staff-links {
+        gap: 16px;
+      }
+      .manga-staff {
+        .staff-list {
+          gap: 8px;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .trackers {
+        flex-direction: row;
+      }
+    }
+  
+    .fuzz-comment {
+      position: relative;
+      right: 0;
+      margin-top: 16px;
+      .sakurako {
+        height: 120px;
+      }
+      .bubble {
+        position: static;
+        padding: 16px 16px;
+        margin: 0 0 32px 0;
+        border-radius: 60px;
+        flex: 1 0 auto;
+        .says {
+          margin: 0 0 8px;
+          text-align: center;
+        }
+      }
+      .circle {
+        right: 114px;
+        bottom: 7px;
+      }
+      .circle:first-of-type {
+        right: 94px;
+        bottom: 31px;
+      }
+      .circle:last-of-type {
+        right: 155px;
+        bottom: 10px;
+      }
+    }
   }
 }

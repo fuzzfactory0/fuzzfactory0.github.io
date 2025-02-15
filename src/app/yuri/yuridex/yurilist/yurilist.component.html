@@ -1,4 +1,4 @@
-<nav class="yuridex-sidebar">
+<nav class="yuridex-sidebar" [ngClass]="{'mobile-sidebar': isMobile, 'expanded': showMenu, 'collapsed': !showMenu}">
   <div class="sidebar-buttons">
     <mat-slide-toggle [(ngModel)]="filterMode" (click)="resetScroll()" matTooltip="Toggle filter mode">
       <mat-icon>filter_alt</mat-icon>
@@ -17,7 +17,7 @@
   <div class="sidebar-content" >
     @if (!filterMode) {
       @for (category of categories; track $index) {
-        <a [href]="'/yuri#category-'+category.id">{{category.name}}</a>
+        <a [href]="'/yuri#category-'+category.id" (click)="hideMenu()">{{category.name}}</a>
       }
     }
     @if (filterMode) {
@@ -26,6 +26,7 @@
           <mat-chip (click)="setFilter(category)" [matTooltip]="category.description" [ngClass]="{'pill-green': getIsIncluded(category), 'pill-red': getIsExcluded(category)}">{{category.name}}</mat-chip>
         }
       </div>
+      <button mat-flat-button class="only-mobile" (click)="hideMenu()">Filter</button>
     }
   </div>
 </nav>
@@ -39,15 +40,17 @@
         </div>
         <div class="grid-container">
           @for (manga of category.series; track $index) {
-            <div class="manga-container" (click)="showDetails(manga)">
+            <a class="manga-container" [href]="'/yuri/series/'+manga.id">
               <div class="manga-icons">
+                <mat-icon *ngIf="isAnthology(manga)" matTooltip="This manga is an anthology (a collection of independent one-shots)" fontSet="material-symbols-outlined" class="blue">book_6</mat-icon>
+                <mat-icon *ngIf="isOneshot(manga)" matTooltip="This manga is a one-shot (magazine published, doujinshi, or self-published online)" class="blue">looks_one</mat-icon>
                 <mat-icon *ngIf="manga.nsfw" matTooltip="This manga contains some degree of NSFW content" class="red">18_up_rating</mat-icon>
                 <mat-icon *ngIf="manga.completeTranslation" matTooltip="This manga is finished and fully translated" class="green">check_circle</mat-icon>
               </div>
-              <div class="manga-cover" [ngStyle]="{'background-image': 'url(' + getCover(manga) + ')', '--shadow-color': (manga.anilistData.coverImage.color || 'white')}" [id]="'cover-'+manga.id">
+              <div class="manga-cover" [ngStyle]="{'background-image': 'url(' + getCover(manga) + ')', '--shadow-color': (manga.anilistData.coverImage.color || '#dddddd')}" [id]="'cover-'+manga.id">
               </div>
               <h3 class="manga-title">{{getTitle(manga)}}</h3>
-            </div>
+            </a>
           }
         </div>
       </div>
@@ -65,21 +68,23 @@
         </p>
         <p>
           @for (id of filterExclude; track $index; let last = $last) {
-            -<span class="red-text">{{getCategoryById(id)}}</span>{{$last ? '' : ', '}}
+            –<span class="red-text">{{getCategoryById(id)}}</span>{{$last ? '' : ', '}}
           }
         </p>
       </div>
       <div class="grid-container">
         @for (manga of filteredSeries; track $index) {
-          <div class="manga-container" (click)="showDetails(manga)">
+          <a class="manga-container" [href]="'/yuri/series/'+manga.id">
             <div class="manga-icons">
+              <mat-icon *ngIf="isAnthology(manga)" matTooltip="This manga is an anthology (a collection of independent one-shots)" fontSet="material-symbols-outlined" class="blue">book_6</mat-icon>
+              <mat-icon *ngIf="isOneshot(manga)" matTooltip="This manga is a one-shot (magazine published, doujinshi, or self-published online)" class="blue">looks_one</mat-icon>
               <mat-icon *ngIf="manga.nsfw" matTooltip="This manga contains some degree of NSFW content" class="red">18_up_rating</mat-icon>
               <mat-icon *ngIf="manga.completeTranslation" matTooltip="This manga is finished and fully translated" class="green">check_circle</mat-icon>
             </div>
-            <div class="manga-cover" [ngStyle]="{'background-image': 'url(' + getCover(manga) + ')', '--shadow-color': (manga.anilistData.coverImage.color || 'white')}" [id]="'cover-'+manga.id">
+            <div class="manga-cover" [ngStyle]="{'background-image': 'url(' + getCover(manga) + ')', '--shadow-color': (manga.anilistData.coverImage.color || '#dddddd')}" [id]="'cover-'+manga.id">
             </div>
             <h3 class="manga-title">{{getTitle(manga)}}</h3>
-          </div>
+          </a>
         }
       </div>
     </div>
